@@ -1,5 +1,5 @@
 # Discourse Perspective plugin
-This plugin flags toxic posts using Google's Perspective API.
+This plugin flags toxic posts using Google's Perspective Russian Language Models API.
 
 ## Installation
 

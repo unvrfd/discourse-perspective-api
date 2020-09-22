@@ -4,10 +4,10 @@ require 'rails_helper'
 require 'fakeweb'
 
 API_ENDPOINT = "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key="
-API_RESPONSE_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.015122943,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.015122943,"type": "PROBABILITY"}}},"languages": ["en"]}'
-API_RESPONSE_HIGH_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.915122943,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.915122943,"type": "PROBABILITY"}}},"languages": ["en"]}'
-API_RESPONSE_SEVERE_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.0053346273,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.0053346273,"type": "PROBABILITY"}}},"languages": ["en"]}'
-API_RESPONSE_HIGH_SEVERE_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.915122943,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.915122943,"type": "PROBABILITY"}}},"languages": ["en"]}'
+API_RESPONSE_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.015122943,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.015122943,"type": "PROBABILITY"}}},"languages": ["ru"]}'
+API_RESPONSE_HIGH_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.915122943,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.915122943,"type": "PROBABILITY"}}},"languages": ["ru"]}'
+API_RESPONSE_SEVERE_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.0053346273,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.0053346273,"type": "PROBABILITY"}}},"languages": ["ru"]}'
+API_RESPONSE_HIGH_SEVERE_TOXICITY_BODY = '{"attributeScores": {"TOXICITY": {"spanScores": [{"begin": 0,"end": 11,"score": {"value": 0.915122943,"type": "PROBABILITY"}}],"summaryScore": {"value": 0.915122943,"type": "PROBABILITY"}}},"languages": ["ru"]}'
 
 describe DiscoursePerspective do
   before do
@@ -42,8 +42,8 @@ describe DiscoursePerspective do
   end
 
   describe '.extract_value_from_analyze_comment_response' do
-    let(:toxicity_response) { '{ "attributeScores": { "TOXICITY": { "spanScores": [ { "begin": 0, "end": 80, "score": { "value": 0.026585817, "type": "PROBABILITY" } } ], "summaryScore": { "value": 0.026585817, "type": "PROBABILITY" } } }, "languages": [ "en" ] }' }
-    let(:severe_toxicity_response) { '{ "attributeScores": { "SEVERE_TOXICITY": { "spanScores": [ { "begin": 0, "end": 80, "score": { "value": 0.0039000872, "type": "PROBABILITY" } } ], "summaryScore": { "value": 0.0039000872, "type": "PROBABILITY" } } }, "languages": [ "en" ] }' }
+    let(:toxicity_response) { '{ "attributeScores": { "TOXICITY": { "spanScores": [ { "begin": 0, "end": 80, "score": { "value": 0.026585817, "type": "PROBABILITY" } } ], "summaryScore": { "value": 0.026585817, "type": "PROBABILITY" } } }, "languages": [ "ru" ] }' }
+    let(:severe_toxicity_response) { '{ "attributeScores": { "SEVERE_TOXICITY": { "spanScores": [ { "begin": 0, "end": 80, "score": { "value": 0.0039000872, "type": "PROBABILITY" } } ], "summaryScore": { "value": 0.0039000872, "type": "PROBABILITY" } } }, "languages": [ "ru" ] }' }
     let(:blank) { '' }
 
     it 'returns toxicity score' do
